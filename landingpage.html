@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressive Landing Page</title>
+
+</head>
+<style>
+   
+
+  body{
+    background-color: #BC7FCD;
+  }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  header {
+    background-color: #86469C;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FB9AD1;
+  }
+  
+  header h1 {
+    font-size: 24px;
+  }
+  
+  header ul {
+    list-style: none;
+  }
+  
+  header ul li {
+    display: inline;
+    margin-left: 20px;
+  }
+  
+  header ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  section {
+    padding: 60px 0;
+  }
+  
+  #hero {
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+  
+  #hero h2 {
+    font-size: 36px;
+  }
+  
+  .btn {
+    display: inline-block;
+    background-color: #FB9AD1;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  #features .features-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    flex-basis: calc(33.33% - 20px);
+    margin-bottom: 40px;
+  }
+  
+  .services-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .service {
+    flex-basis: calc(33.33% - 20px);
+    margin-bottom: 40px;
+  }
+  
+  footer {
+    background-color: #86469C;
+    color: #fff;
+    text-align: center;
+    padding: 60px 0;
+  }
+  
+  footer p {
+    margin-bottom: 20px;
+  }
+  
+  footer form input,
+  footer form textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  footer form button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+</style>
+<body>
+
+<header>
+  <nav>
+    <div class="container">
+      <h1>My Brand</h1>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<section id="hero">
+  <div class="container">
+    <h2>Welcome to My Brand</h2>
+    <p>We offer innovative solutions for your business.</p>
+    <a href="#contact" class="btn">Get Started</a>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <h2>Key Features</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Feature 1 - Responsive Design:</h3>
+        <p>Ensure your landing page is optimized for various devices, including desktops, tablets, and smartphones. A responsive design will provide a seamless browsing experience for all users, regardless of the device they're using.</p>
+      </div>
+      <div class="feature">
+        <h3>Feature 2 - Interactive Elements:</h3>
+        <p>
+          Incorporate interactive elements such as animated graphics, hover effects, or interactive forms to engage visitors and encourage them to explore further. Interactive features can make your landing page more dynamic and memorable</p>
+      </div>
+      <div class="feature">
+        <h3>Feature 3 - Analytics Integration: </h3>
+        <p>
+         Implement analytics tools such as Google Analytics to track visitor behavior and gather valuable insights about your audience. Analyzing metrics like traffic sources, page views, and user engagement can help you optimize your landing page for better performance and conversion rates. </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service">
+        <h3>Service 1 - Web Hosting:</h3>
+        <p> Choose a reliable web hosting service to ensure your landing page is accessible to users around the clock. Look for hosting providers that offer fast loading times, uptime guarantees, and security features to keep your site running smoothly.
+
+        </p>
+      </div>
+      <div class="service">
+        <h3>Service 2 - Email Marketing:</h3>
+        <p>Utilize an email marketing service like Mailchimp or Constant Contact to build and manage email lists, create engaging email campaigns, and track email performance metrics. Email marketing can be an effective way to nurture leads and drive conversions.
+        </p>
+      </div>
+      <div class="service">
+        <h3>Service 3 - Content Delivery Network (CDN):</h3>
+        <p>  Implement a CDN service such as Cloudflare or Amazon CloudFront to improve the speed and performance of your landing page by delivering content from servers located closer to your website visitors. A CDN helps reduce latency and ensures a faster, more reliable user experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>Get in touch with us for more information.</p>
+    <form action="#" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+</footer>
+
+<script>
+ 
+window.addEventListener('resize', function() {
+    if (window.innerWidth < 768) {
+     
+      document.querySelector('header').style.padding = '10px 0';
+      document.querySelector('header h1').style.fontSize = '20px';
+      document.querySelectorAll('header ul li').forEach(function(item) {
+        item.style.marginLeft = '10px';
+      });
+      document.querySelectorAll('.feature, .service').forEach(function(item) {
+        item.style.flexBasis = '100%';
+      });
+    } else {
+      
+      document.querySelector('header').style.padding = '20px 0';
+      document.querySelector('header h1').style.fontSize = '24px';
+      document.querySelectorAll('header ul li').forEach(function(item) {
+        item.style.marginLeft = '20px';
+      });
+      document.querySelectorAll('.feature, .service').forEach(function(item) {
+        item.style.flexBasis = 'calc(33.33% - 20px)';
+      });
+    }
+  });
+  
+</script>
+</body>
+</html>

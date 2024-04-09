@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #4790a6;
+      }
+      
+
+      h2{
+        color: #ff6f6f;
+        font-size: 60px;
+        padding-right: 100px;
+        margin-right: -350px;
+        margin-bottom: 450px;
+        border-radius: 10%;
+        font-family: 'Times New Roman', Times, serif;
+       
+      }
+      .calculator {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 5px;
+        max-width: 300px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .display {
+        grid-column: span 4;
+        text-align: right;
+        padding: 10px;
+        font-size: 1.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      
+      .btn {
+        padding: 10px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #e0e0e0;
+      }
+      
+      .btn:hover {
+        background-color: #ccc;
+      }
+      
+      #clear,
+      #backspace,
+      #equal {
+        background-color: #ff6f6f;
+        color: #fff;
+      }
+      
+      #clear:hover,
+      #backspace:hover,
+      #equal:hover {
+        background-color: #ff4f4f;
+      }
+      
+</style>
+<body>
+  <h2>Calculator</h2>
+
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <button class="btn" id="clear">C</button>
+    <button class="btn" id="backspace">&#9003;</button>
+    <button class="btn" id="zero">0</button>
+    <button class="btn" id="divide">/</button>
+    <button class="btn" id="one">1</button>
+    <button class="btn" id="two">2</button>
+    <button class="btn" id="three">3</button>
+    <button class="btn" id="multiply">*</button> 
+    <button class="btn" id="four">4</button>
+    <button class="btn" id="five">5</button>
+    <button class="btn" id="six">6</button>
+    <button class="btn" id="add">+</button>
+    <button class="btn" id="seven">7</button>
+    
+    <button class="btn" id="eight">8</button>
+    <button class="btn" id="nine">9</button>
+    
+    
+    <button class="btn" id="subtract">-</button>
+    
+   
+   
+    
+    
+    <button class="btn" id="decimal">.</button>
+    <button style="font-size: 10px;" class="btn" id="equal">Calculate</button>
+  </div>
+  
+  <script>document.addEventListener("DOMContentLoaded", function() {
+    const display = document.getElementById("display");
+    const clearBtn = document.getElementById("clear");
+    const backspaceBtn = document.getElementById("backspace");
+    const divideBtn = document.getElementById("divide");
+    const multiplyBtn = document.getElementById("multiply");
+    const subtractBtn = document.getElementById("subtract");
+    const addBtn = document.getElementById("add");
+    const equalBtn = document.getElementById("equal");
+    const decimalBtn = document.getElementById("decimal");
+    
+    const numberButtons = document.querySelectorAll(".btn:not(#clear):not(#backspace):not(#divide):not(#multiply):not(#subtract):not(#add):not(#equal):not(#decimal)");
+    
+    let displayValue = "";
+    let firstOperand = null;
+    let operator = null;
+    let waitingForSecondOperand = false;
+    
+    function updateDisplay() {
+      display.textContent = displayValue;
+    }
+    
+    updateDisplay();
+    
+    numberButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        if (waitingForSecondOperand === true) {
+          displayValue = button.textContent;
+          waitingForSecondOperand = false;
+        } else {
+          displayValue += button.textContent;
+        }
+        updateDisplay();
+      });
+    });
+    
+    clearBtn.addEventListener("click", () => {
+      displayValue = "";
+      firstOperand = null;
+      operator = null;
+      waitingForSecondOperand = false;
+      updateDisplay();
+    });
+    
+    backspaceBtn.addEventListener("click", () => {
+      displayValue = displayValue.slice(0, -1);
+      updateDisplay();
+    });
+    
+    decimalBtn.addEventListener("click", () => {
+      if (!displayValue.includes(".")) {
+        displayValue += ".";
+        updateDisplay();
+      }
+    });
+    
+    divideBtn.addEventListener("click", () => {
+      calculate();
+      operator = "/";
+      waitingForSecondOperand = true;
+    });
+    
+    multiplyBtn.addEventListener("click", () => {
+      calculate();
+      operator = "*";
+      waitingForSecondOperand = true;
+    });
+    
+    subtractBtn.addEventListener("click", () => {
+      calculate();
+      operator = "-";
+      waitingForSecondOperand = true;
+    });
+    
+    addBtn.addEventListener("click", () => {
+      calculate();
+      operator = "+";
+      waitingForSecondOperand = true;
+    });
+    
+    equalBtn.addEventListener("click", () => {
+      calculate();
+      operator = null;
+    });
+    
+    function calculate() {
+      const inputValue = parseFloat(displayValue);
+      if (firstOperand === null) {
+        firstOperand = inputValue;
+      } else if (operator) {
+        const result = operate(firstOperand, inputValue, operator);
+        displayValue = String(result);
+        firstOperand = result;
+      }
+      waitingForSecondOperand = true;
+      updateDisplay();
+    }
+    
+    function operate(a, b, operator) {
+      switch (operator) {
+        case "+":
+          return a + b;
+        case "-":
+          return a - b;
+        case "*":
+          return a * b;
+        case "/":
+          return a / b;
+        default:
+          return b;
+      }
+    }
+  });
+  </script>
+</body>
+</html>
